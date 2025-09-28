@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <h1>Create an account</h1> -->
+
+<div class="container">
+    <div class="p-4 m-4 ">
+        <div class="col-lg-4 mx-auto  p-3 m-4 pt-4 mt-4  border rounded">
+             <h3 class="mx-auto alert alert-light border rounded">Login Here</h3>
+            <form action="/login" method="POST">
+                <!-- Added CSRF token -->
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-success" role="alert">
+                        {{error}}
+                </div>
+                {% endif %}
+               
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" 
+                    name="email" 
+                    id=""  value="{{values.email}}" class="form-control form-control-sm" 
+                    placeholder="example@gmail.com">
+                </div>
+
+                <!-- Passoword -->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input required type="password"
+                     name="password" 
+                    id="" class="form-control form-control-sm"
+                     placeholder="******">
+                </div>
+
+
+
+                <!-- Create Button -->
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info mt-2 col-lg-4" type="submit" value="Login">
+                    
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
